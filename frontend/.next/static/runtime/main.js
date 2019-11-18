@@ -5604,7 +5604,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/bennywang/Documents/Advanced-React-master/sick-fits/frontend/.next");
+      (0, _sourceMapSupport.rewriteStacktrace)(error, "/Users/bennywang/Dropbox/Career/Benny's Portfolio/MEHKO/frontend/.next");
       return error;
     }
   };
