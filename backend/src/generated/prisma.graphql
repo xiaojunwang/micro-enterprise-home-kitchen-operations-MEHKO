@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/benny-wang/Project-E/dev
-# timestamp: Sun Nov 17 2019 18:58:31 GMT-0800 (Pacific Standard Time)
+# timestamp: Mon Nov 18 2019 10:00:19 GMT-0800 (Pacific Standard Time)
 
 type AggregateCartItem {
   count: Int!
@@ -851,6 +851,7 @@ type OrderItem implements Node {
   description: String!
   image: String!
   largeImage: String!
+  quantity: Int!
   price: Int!
   user: User
 }
@@ -871,6 +872,7 @@ input OrderItemCreateInput {
   description: String!
   image: String!
   largeImage: String!
+  quantity: Int!
   price: Int
   user: UserCreateOneInput
 }
@@ -900,6 +902,8 @@ enum OrderItemOrderByInput {
   image_DESC
   largeImage_ASC
   largeImage_DESC
+  quantity_ASC
+  quantity_DESC
   price_ASC
   price_DESC
 }
@@ -910,6 +914,7 @@ type OrderItemPreviousValues {
   description: String!
   image: String!
   largeImage: String!
+  quantity: Int!
   price: Int!
 }
 
@@ -1122,6 +1127,28 @@ input OrderItemScalarWhereInput {
 
   """All values not ending with the given string."""
   largeImage_not_ends_with: String
+  quantity: Int
+
+  """All values that are not equal to given value."""
+  quantity_not: Int
+
+  """All values that are contained in given list."""
+  quantity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  quantity_not_in: [Int!]
+
+  """All values less than the given value."""
+  quantity_lt: Int
+
+  """All values less than or equal the given value."""
+  quantity_lte: Int
+
+  """All values greater than the given value."""
+  quantity_gt: Int
+
+  """All values greater than or equal the given value."""
+  quantity_gte: Int
   price: Int
 
   """All values that are not equal to given value."""
@@ -1190,6 +1217,7 @@ input OrderItemUpdateDataInput {
   description: String
   image: String
   largeImage: String
+  quantity: Int
   price: Int
   user: UserUpdateOneInput
 }
@@ -1199,6 +1227,7 @@ input OrderItemUpdateInput {
   description: String
   image: String
   largeImage: String
+  quantity: Int
   price: Int
   user: UserUpdateOneInput
 }
@@ -1208,6 +1237,7 @@ input OrderItemUpdateManyDataInput {
   description: String
   image: String
   largeImage: String
+  quantity: Int
   price: Int
 }
 
@@ -1228,6 +1258,7 @@ input OrderItemUpdateManyMutationInput {
   description: String
   image: String
   largeImage: String
+  quantity: Int
   price: Int
 }
 
@@ -1456,6 +1487,28 @@ input OrderItemWhereInput {
 
   """All values not ending with the given string."""
   largeImage_not_ends_with: String
+  quantity: Int
+
+  """All values that are not equal to given value."""
+  quantity_not: Int
+
+  """All values that are contained in given list."""
+  quantity_in: [Int!]
+
+  """All values that are not contained in given list."""
+  quantity_not_in: [Int!]
+
+  """All values less than the given value."""
+  quantity_lt: Int
+
+  """All values less than or equal the given value."""
+  quantity_lte: Int
+
+  """All values greater than the given value."""
+  quantity_gt: Int
+
+  """All values greater than or equal the given value."""
+  quantity_gte: Int
   price: Int
 
   """All values that are not equal to given value."""

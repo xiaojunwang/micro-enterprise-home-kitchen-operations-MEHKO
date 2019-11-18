@@ -311,7 +311,7 @@ const Mutations = {
         cart { 
           id 
           quantity 
-          item { title price id description image }
+          item { title price id description image largeImage }
       }}`
     )
     //2. recalculate the total for the price - reason, you don't want price to be dictated on client side, user can use JS to change charge amount to $.01
@@ -333,10 +333,28 @@ const Mutations = {
         quantity: cartItem.quantity,
         user: { connect: { id: userId } },
       }
+      delete orderItem.id //since we don't want the id
+      return orderItem //end up with an array of order items that has been disconnected from the actual item
     })
     //5. create the order
+    const order = await ctx.db.mutation.createOrder({
+      data: {
+        //we want to pass some data for the order, and that data will have some...
+        total: charge.amount, //charge is coming back from stripe
+        charge: charge.id,
+        items: { create: orderItems },
+        user: { connect: { id: userId } },
+      },
+    })
     //6. clean up - clear the users cart
+    const cartItemsId = user.cart.map(cartItem => cartItem.id) //give us an array of item ids that's current in user's cart
+    await ctx.db.mutation.deleteManyCartItems({
+      where: {
+        id_in: cartItemsId, //delete if the id is in the user's cart
+      },
+    })
     //7. return the order to the client
+    return order
   },
 }
 
