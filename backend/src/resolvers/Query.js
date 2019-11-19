@@ -1,14 +1,14 @@
-const { forwardTo } = require("prisma-binding");
-const { hasPermission } = require("../utils");
+const { forwardTo } = require('prisma-binding');
+const { hasPermission } = require('../utils');
 
 const Query = {
-  items: forwardTo("db"),
+  items: forwardTo('db'),
   // async items(parents, args, ctx, info) {
   //   const items = await ctx.db.query.items();
   //   return items;
   // }
-  item: forwardTo("db"),
-  itemsConnection: forwardTo("db"),
+  item: forwardTo('db'),
+  itemsConnection: forwardTo('db'),
 
   me(parent, args, ctx, info) {
     //check if there is a current userId
@@ -21,14 +21,55 @@ const Query = {
   async users(parent, args, ctx, info) {
     //0. Check if they're loged in
     if (!ctx.request.userId) {
-      throw new Error("You must be logged in");
+      throw new Error('You must be logged in');
     }
     //1. check if the user has the permissions to query all the users, don't want anyone to come into our api and adjust
-    hasPermission(ctx.request.user, ["ADMIN", "PERMISSIONUPDATE"]); //user must have admin or permissionupdate to proceed
+    hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE']); //user must have admin or permissionupdate to proceed
     //2. if they do, query all the users
     return ctx.db.query.users({}, info); //empty object because we want to query all of the users
     //"info" includes the graphql query that contains the fields that we're requesting from the frontend
-  }
+  },
+
+  async order(parent, args, ctx, info) {
+    // 1. Make sure they are logged in
+    if (!ctx.request.userId) {
+      throw new Error('You arent logged in!');
+    }
+    // 2. Query the current order
+    const order = await ctx.db.query.order(
+      {
+        where: { id: args.id },
+      },
+      info
+    );
+    // 3. Check if the have the permissions to see this order
+    const ownsOrder = order.user.id === ctx.request.userId;
+    const hasPermissionToSeeOrder = ctx.request.user.permissions.includes(
+      'ADMIN'
+    );
+    if (!ownsOrder && !hasPermissionToSeeOrder) {
+      throw new Error('You cant see this buddd');
+    }
+    // 4. Return the order
+    return order;
+  },
+
+  async orders(parent, args, ctx, info) {
+    //1. get user id
+    const { userId } = ctx.request;
+    //2. check if they're logged in
+    if (!userId) {
+      throw new Error('You must be logged in to view your orders.');
+    }
+    return ctx.db.query.orders(
+      {
+        where: {
+          user: { id: userId },
+        },
+      },
+      info
+    );
+  },
 };
 
 module.exports = Query;
