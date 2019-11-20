@@ -538,11 +538,12 @@ function (_Component) {
 /*!******************************!*\
   !*** ./components/Signup.js ***!
   \******************************/
-/*! exports provided: default */
+/*! exports provided: default, SIGNUP_MUTATION */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SIGNUP_MUTATION", function() { return SIGNUP_MUTATION; });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -620,9 +621,9 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Signup)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      name: "",
-      password: "",
-      email: ""
+      name: '',
+      email: '',
+      password: ''
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "saveToState", function (e) {
@@ -669,9 +670,9 @@ function (_Component) {
 
                     case 3:
                       _this2.setState({
-                        name: "",
-                        email: "",
-                        password: ""
+                        name: '',
+                        email: '',
+                        password: ''
                       });
 
                     case 4:
@@ -688,7 +689,7 @@ function (_Component) {
           }(),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 39
+            lineNumber: 38
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("fieldset", {
@@ -696,27 +697,27 @@ function (_Component) {
           "aria-busy": loading,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 47
+            lineNumber: 45
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h2", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 48
+            lineNumber: 46
           },
           __self: this
         }, "Sign Up for An Account"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_5__["default"], {
           error: error,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 49
+            lineNumber: 47
           },
           __self: this
         }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
           htmlFor: "email",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 50
+            lineNumber: 48
           },
           __self: this
         }, "Email", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -727,14 +728,14 @@ function (_Component) {
           onChange: _this2.saveToState,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 52
+            lineNumber: 50
           },
           __self: this
         })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
           htmlFor: "name",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 58
           },
           __self: this
         }, "Name", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -745,14 +746,14 @@ function (_Component) {
           onChange: _this2.saveToState,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 60
           },
           __self: this
         })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
           htmlFor: "password",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 70
+            lineNumber: 68
           },
           __self: this
         }, "Password", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -763,14 +764,14 @@ function (_Component) {
           onChange: _this2.saveToState,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 72
+            lineNumber: 70
           },
           __self: this
         })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           type: "submit",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 81
+            lineNumber: 79
           },
           __self: this
         }, "Sign Up!")));
@@ -782,6 +783,7 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Signup);
+
 
 /***/ }),
 
@@ -809,7 +811,7 @@ var _jsxFileName = "/Users/bennywang/Dropbox/Career/Benny's Portfolio/MEHKO/fron
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  query {\n    me {\n      id\n      email\n      name\n      permissions\n      cart {\n        id\n        quantity\n        item {\n          id\n          price\n          image\n          title\n          description\n        }\n      }\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  query {\n    me {\n      id\n      email\n      name\n      permissions\n      orders {\n        id\n      }\n      cart {\n        id\n        quantity\n        item {\n          id\n          price\n          image\n          title\n          description\n        }\n      }\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -830,7 +832,7 @@ var User = function User(props) {
     query: CURRENT_USER_QUERY,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 31
     },
     __self: this
   }), function (payload) {

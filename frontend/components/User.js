@@ -1,6 +1,6 @@
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import PropTypes from "prop-types";
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import PropTypes from 'prop-types';
 
 const CURRENT_USER_QUERY = gql`
   query {
@@ -9,6 +9,9 @@ const CURRENT_USER_QUERY = gql`
       email
       name
       permissions
+      orders {
+        id
+      }
       cart {
         id
         quantity
@@ -31,7 +34,7 @@ const User = props => (
 );
 
 User.propTypes = {
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
 };
 //whenever you use it the only thing you must pass as a child is going to be a function
 
