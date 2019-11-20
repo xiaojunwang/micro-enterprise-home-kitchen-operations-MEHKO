@@ -1,16 +1,16 @@
-import Link from 'next/link'
-import { Mutation } from 'react-apollo'
-import NavStyles from './styles/NavStyles'
-import User from './User'
-import Signout from './Signout'
-import { TOGGLE_CART_MUTATION } from '../components/Cart'
-import CartCount from './CartCount'
+import Link from 'next/link';
+import { Mutation } from 'react-apollo';
+import NavStyles from './styles/NavStyles';
+import User from './User';
+import Signout from './Signout';
+import { TOGGLE_CART_MUTATION } from '../components/Cart';
+import CartCount from './CartCount';
 
 const Nav = () => (
   <User>
     {/* ^^exposes the currently logged in user and pass down the CURRENT USER QUERY prop */}
     {({ data: { me } }) => (
-      <NavStyles>
+      <NavStyles data-test='nav'>
         <Link href='/items'>
           <a>Shop</a>
         </Link>
@@ -48,6 +48,6 @@ const Nav = () => (
       </NavStyles>
     )}
   </User>
-)
+);
 
-export default Nav
+export default Nav;
