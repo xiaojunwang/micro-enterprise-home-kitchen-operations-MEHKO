@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Cart /> Renders and matches snapshot 1`] = `
+<header>
+  <CloseButton
+    onClick={[Function]}
+    title="close"
+  >
+    <button
+      className="CloseButton-oxgx8g-0 gsaGeJ"
+      onClick={[Function]}
+      title="close"
+    >
+      ×
+    </button>
+  </CloseButton>
+  <Supreme>
+    <h3
+      className="Supreme-sc-3zd7pr-0 RJrLf"
+    >
+      Miss Coleman Berge
+      's Cart
+    </h3>
+  </Supreme>
+  <p>
+    You Have 
+    1
+     Item
+     in Your Cart
+  </p>
+</header>
+`;

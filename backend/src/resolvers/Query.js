@@ -48,7 +48,7 @@ const Query = {
       'ADMIN'
     );
     if (!ownsOrder && !hasPermissionToSeeOrder) {
-      throw new Error('You cant see this buddd');
+      throw new Error("You can't see this");
     }
     // 4. Return the order
     return order;

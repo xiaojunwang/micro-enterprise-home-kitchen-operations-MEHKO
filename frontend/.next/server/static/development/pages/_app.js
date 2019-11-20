@@ -200,7 +200,7 @@ var Cart = function Cart() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Composed, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 37
     },
     __self: this
   }, function (_ref4) {
@@ -243,10 +243,10 @@ var Cart = function Cart() {
         lineNumber: 51
       },
       __self: this
-    }, ' ', "You Have ", me.cart.length, " Item", me.cart.length > 1 ? 's' : '', " in Your Cart")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    }, "You Have ", me.cart.length, " Item", me.cart.length > 1 ? 's' : '', " in Your Cart")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 57
+        lineNumber: 56
       },
       __self: this
     }, me.cart.map(function (cartItem) {
@@ -255,33 +255,33 @@ var Cart = function Cart() {
         cartItem: cartItem,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 58
         },
         __self: this
       });
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 62
+        lineNumber: 61
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 63
+        lineNumber: 62
       },
       __self: this
     }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_11__["default"])(Object(_lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_10__["default"])(me.cart))), me.cart.length && //if cart is true, then render the checkout button
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Payment__WEBPACK_IMPORTED_MODULE_12__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 64
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_SickButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 65
       },
       __self: this
     }, "Checkout"))));
@@ -322,7 +322,7 @@ var AnimationStyles = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.s
 var Dot = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
   displayName: "CartCount__Dot",
   componentId: "sll66f-1"
-})(["background:", ";color:white;border-radius:50%;padding:0.5rem;line-height:2rem;min-width:3rem;margin-left:1rem;font-weight:100;font-feature-settings:\"tnum\";font-variant-numeric:tabular-nums;"], function (props) {
+})(["background:", ";color:white;border-radius:50%;padding:0.5rem;line-height:2rem;min-width:3rem;margin-left:1rem;font-weight:100;font-feature-settings:'tnum';font-variant-numeric:tabular-nums;"], function (props) {
   return props.theme.red;
 });
 
@@ -357,12 +357,15 @@ var CartCount = function CartCount(_ref) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Dot, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 54
     },
     __self: this
   }, count))));
 };
 
+CartCount.propTypes = {
+  count: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.number.isRequired
+};
 /* harmony default export */ __webpack_exports__["default"] = (CartCount);
 
 /***/ }),
@@ -1244,11 +1247,12 @@ function (_Component) {
 /*!**************************************!*\
   !*** ./components/RemoveFromCart.js ***!
   \**************************************/
-/*! exports provided: default */
+/*! exports provided: default, REMOVE_FROM_CART_MUTATION */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_FROM_CART_MUTATION", function() { return REMOVE_FROM_CART_MUTATION; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-apollo */ "react-apollo");
@@ -1329,7 +1333,7 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "update", function (cache, payload) {
       //cache is the apollo cache, payload is the dump of information that's returned from the server once it's done
       //1. read the cache
-      console.log("running remove from cart updatre fn");
+      console.log('running remove from cart updatre fn');
       var data = cache.readQuery({
         query: _User__WEBPACK_IMPORTED_MODULE_5__["CURRENT_USER_QUERY"]
       });
@@ -1361,11 +1365,11 @@ function (_React$Component) {
         update: this.update,
         optimisticResponse: {
           //give it what you think the server will responde with = optimisticResponse making feedback almost instantenous without haveing to wait for server
-          __typename: "Mutation",
+          __typename: 'Mutation',
           //have to give typename of what type we have. here we're assuming it's going to return a mutation
           removeFromCart: {
             //inside that mutation, we have assume it return a removeFromcart object
-            __typename: "CartItem",
+            __typename: 'CartItem',
             id: this.props.id //assume it's going to return an id with item was removed id.
 
           }
@@ -1388,7 +1392,7 @@ function (_React$Component) {
           title: "Delete Item",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 63
           },
           __self: this
         }, "\u24CD");
@@ -1404,6 +1408,7 @@ _defineProperty(RemoveFromCart, "propTypes", {
 });
 
 /* harmony default export */ __webpack_exports__["default"] = (RemoveFromCart);
+
 
 /***/ }),
 

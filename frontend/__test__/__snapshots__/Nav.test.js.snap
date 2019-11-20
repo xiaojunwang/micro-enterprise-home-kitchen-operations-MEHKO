@@ -30,7 +30,7 @@ exports[`<Nav /> Renders a minimal nav when signed out 1`] = `
 
 exports[`<Nav /> Renders the amount of items in the cart 1`] = `
 <div
-  className="count CartCount__Dot-sll66f-1 dlNiaI"
+  className="count CartCount__Dot-sll66f-1 bPGiQK"
 >
   6
 </div>

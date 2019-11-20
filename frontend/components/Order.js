@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { Query } from 'react-apollo'
-import { format } from 'date-fns'
-import Head from 'next/head'
-import gql from 'graphql-tag'
-import formatMoney from '../lib/formatMoney'
-import Error from './ErrorMessage'
-import OrderStyles from './styles/OrderStyles'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Query } from 'react-apollo';
+import { format } from 'date-fns';
+import Head from 'next/head';
+import gql from 'graphql-tag';
+import formatMoney from '../lib/formatMoney';
+import Error from './ErrorMessage';
+import OrderStyles from './styles/OrderStyles';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
@@ -28,22 +28,22 @@ const SINGLE_ORDER_QUERY = gql`
       }
     }
   }
-`
+`;
 
 class Order extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
-  }
+  };
   render() {
     return (
       <Query query={SINGLE_ORDER_QUERY} variables={{ id: this.props.id }}>
         {({ data, error, loading }) => {
-          if (error) return <Error error={error} />
-          if (loading) return <p> Loading... </p>
+          if (error) return <Error error={error} />;
+          if (loading) return <p> Loading... </p>;
           {
             /* console.log(data) */
           }
-          const order = data.order
+          const order = data.order;
           return (
             <OrderStyles>
               <Head>
@@ -84,11 +84,12 @@ class Order extends Component {
                 ))}
               </div>
             </OrderStyles>
-          )
+          );
         }}
       </Query>
-    )
+    );
   }
 }
 
-export default Order
+export default Order;
+export { SINGLE_ORDER_QUERY };

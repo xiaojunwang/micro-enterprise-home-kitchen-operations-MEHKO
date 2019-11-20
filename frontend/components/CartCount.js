@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { TransitionGroup, CSSTransition } from "react-transition-group";
-import styled from "styled-components";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import styled from 'styled-components';
 
 const AnimationStyles = styled.span`
   position: relative;
@@ -37,7 +37,7 @@ const Dot = styled.div`
   min-width: 3rem;
   margin-left: 1rem;
   font-weight: 100;
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
   /* ^^ will change width based on what number it is, i.e. 1 is skinner than 23. */
   font-variant-numeric: tabular-nums;
 `;
@@ -47,15 +47,18 @@ const CartCount = ({ count }) => (
     <TransitionGroup>
       <CSSTransition
         unmountOnExit
-        className="count"
-        classNames="count"
+        className='count'
+        classNames='count'
         key={count}
-        timeout={{ enter: 300, exit: 300 }}
-      >
+        timeout={{ enter: 300, exit: 300 }}>
         <Dot>{count}</Dot>
       </CSSTransition>
     </TransitionGroup>
   </AnimationStyles>
 );
+
+CartCount.propTypes = {
+  count: PropTypes.number.isRequired,
+};
 
 export default CartCount;
