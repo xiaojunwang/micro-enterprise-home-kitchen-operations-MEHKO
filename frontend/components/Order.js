@@ -45,7 +45,7 @@ class Order extends Component {
           }
           const order = data.order;
           return (
-            <OrderStyles>
+            <OrderStyles data-test='order'>
               <Head>
                 <title>MEHKO - Order {order.id}</title>
               </Head>
