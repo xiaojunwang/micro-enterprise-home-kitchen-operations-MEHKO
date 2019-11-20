@@ -149,8 +149,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var USER_ORDERS_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_5___default()(_templateObject());
-var orderUl = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].ul.withConfig({
-  displayName: "OrderList__orderUl",
+var OrderUl = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].ul.withConfig({
+  displayName: "OrderList__OrderUl",
   componentId: "sc-1jcagg8-0"
 })(["display:grid;grid-gap:4rem;grid-template-columns:repeat() (autofit,minmax() (40%,1fr));"]);
 
@@ -208,7 +208,7 @@ function (_Component) {
               lineNumber: 46
             },
             __self: this
-          }, " You have ", orders.length, " orders"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("orderUl", {
+          }, " You have ", orders.length, " orders"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OrderUl, {
             __source: {
               fileName: _jsxFileName,
               lineNumber: 47
