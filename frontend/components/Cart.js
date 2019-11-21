@@ -33,6 +33,14 @@ const Composed = adopt({
   localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>,
 });
 
+const pStyle = {
+  background: 'red',
+  textAlign: 'center',
+  color: 'white',
+  cursor: 'pointer',
+  fontSize: 24,
+};
+
 const Cart = () => (
   <Composed>
     {({ user, toggleCart, localState }) => {
@@ -60,10 +68,12 @@ const Cart = () => (
           </ul>
           <footer>
             <p>{formatMoney(calcTotalPrice(me.cart))}</p>
-            {me.cart.length && ( //if cart is true, then render the checkout button
+            {me.cart.length ? ( //if cart is true, then render the checkout button
               <Payment>
                 <SickButton>Checkout</SickButton>
               </Payment>
+            ) : (
+              <p style={pStyle}>No Item to Checkout</p>
             )}
           </footer>
         </CartStyles>
