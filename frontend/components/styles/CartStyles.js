@@ -22,8 +22,11 @@ const CartStyles = styled.div`
   /* ^^ if cart has a prop of open, cart will transform 0 and show on screen */
   header {
     border-bottom: 5px solid ${props => props.theme.black};
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 0rem;
+    padding-bottom: 0rem;
+    p {
+      text-align: right;
+    }
   }
   footer {
     border-top: 10px double ${props => props.theme.black};

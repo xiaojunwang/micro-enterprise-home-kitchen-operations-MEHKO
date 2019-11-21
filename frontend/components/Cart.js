@@ -11,6 +11,8 @@ import CartItem from './CartItem';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import formatMoney from '../lib/formatMoney';
 import Payment from './Payment';
+import RemoveOneFromCart from './RemoveOneItemFromCart';
+import RemoveFromCart from './RemoveFromCart';
 
 const LOCAL_STATE_QUERY = gql`
   query {
@@ -63,7 +65,9 @@ const Cart = () => (
           </header>
           <ul>
             {me.cart.map(cartItem => (
-              <CartItem key={cartItem.id} cartItem={cartItem} />
+              <CartItem key={cartItem.id} cartItem={cartItem}>
+                <RemoveFromCart> 1️⃣ </RemoveFromCart>
+              </CartItem>
             ))}
           </ul>
           <footer>

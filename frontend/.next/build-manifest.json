@@ -18,6 +18,10 @@
     "/sell": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
+    ],
+    "/item": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }

@@ -246,7 +246,7 @@ const Mutations = {
     // console.log(existingCartItem); //existingCartItem returns a promise, therefore need to await this
     //3. check if that item is already in their cart and increment by 1 if it is
     if (existingCartItem) {
-      console.log('This item is already in their cart');
+      // console.log('This item is already in their cart');
       return ctx.db.mutation.updateCartItem(
         {
           where: { id: existingCartItem.id }, //where id is equal to existingcartitem.id
