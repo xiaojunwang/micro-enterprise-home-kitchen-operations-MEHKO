@@ -1865,15 +1865,17 @@ var Supreme = styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].h3.withC
 /*!*******************!*\
   !*** ./config.js ***!
   \*******************/
-/*! exports provided: endpoint, perPage */
+/*! exports provided: endpoint, prodEndpoint, perPage */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "endpoint", function() { return endpoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prodEndpoint", function() { return prodEndpoint; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "perPage", function() { return perPage; });
 // This is client side config only - don't put anything in here that shouldn't be public!
 var endpoint = "http://localhost:4444";
+var prodEndpoint = "https://mehko-prod.herokuapp.com/";
 var perPage = 4;
 
 /***/ }),
@@ -1947,7 +1949,7 @@ function createClient(_ref) {
     request: function request(operation) {
       operation.setContext({
         fetchOptions: {
-          credentials: "include"
+          credentials: 'include'
         },
         headers: headers
       });
