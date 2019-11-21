@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const CartStyles = styled.div`
   padding: 20px;
@@ -8,7 +8,7 @@ const CartStyles = styled.div`
   height: 100%;
   top: 0;
   right: 0;
-  width: 40%;
+  width: 35%;
   min-width: 500px;
   bottom: 0;
   transform: translateX(100%);
@@ -29,12 +29,13 @@ const CartStyles = styled.div`
     border-top: 10px double ${props => props.theme.black};
     margin-top: 2rem;
     padding-top: 2rem;
-    display: grid;
+    display: flex;
     grid-template-columns: auto auto;
     align-items: center;
     font-size: 3rem;
     font-weight: 900;
     p {
+      flex: 1 21%;
       margin: 0;
     }
   }

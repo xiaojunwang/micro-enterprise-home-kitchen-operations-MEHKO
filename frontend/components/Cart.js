@@ -67,6 +67,7 @@ const Cart = () => (
             ))}
           </ul>
           <footer>
+            <p>Subtotal: </p>
             <p>{formatMoney(calcTotalPrice(me.cart))}</p>
             {me.cart.length ? ( //if cart is true, then render the checkout button
               <Payment>
