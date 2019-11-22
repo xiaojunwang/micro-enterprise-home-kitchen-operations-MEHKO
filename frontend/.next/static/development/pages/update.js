@@ -248,7 +248,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 60
         },
         __self: this
       }, function (_ref2) {
@@ -257,14 +257,14 @@ function (_Component) {
         if (loading) return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 62
           },
           __self: this
         }, " Loading...");
         if (!data.item) return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 63
           },
           __self: this
         }, " No Item Found for ID: ", _this2.props.id);
@@ -273,7 +273,7 @@ function (_Component) {
           variables: _this2.state,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 64
+            lineNumber: 65
           },
           __self: this
         }, function (updateItem, _ref3) {
@@ -285,14 +285,14 @@ function (_Component) {
             },
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 67
+              lineNumber: 68
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ErrorMessage__WEBPACK_IMPORTED_MODULE_5__["default"], {
             error: error,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 68
+              lineNumber: 69
             },
             __self: this
           }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("fieldset", {
@@ -300,14 +300,14 @@ function (_Component) {
             "aria-busy": loading,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 69
+              lineNumber: 70
             },
             __self: this
           }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "title",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 70
+              lineNumber: 71
             },
             __self: this
           }, "Title", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -320,14 +320,14 @@ function (_Component) {
             onChange: _this2.handleChange,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 72
+              lineNumber: 73
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "price",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 83
+              lineNumber: 84
             },
             __self: this
           }, "Price", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -340,14 +340,14 @@ function (_Component) {
             onChange: _this2.handleChange,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 85
+              lineNumber: 86
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
             htmlFor: "description",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 96
+              lineNumber: 97
             },
             __self: this
           }, "Description", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("textarea", {
@@ -359,14 +359,14 @@ function (_Component) {
             onChange: _this2.handleChange,
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 98
+              lineNumber: 99
             },
             __self: this
           })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
             type: "submit",
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 107
+              lineNumber: 108
             },
             __self: this
           }, "Sav", loading ? 'ing' : 'e', " Changes")));

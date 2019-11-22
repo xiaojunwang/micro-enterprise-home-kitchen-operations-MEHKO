@@ -54,6 +54,7 @@ class UpdateItem extends Component {
     });
     Router.push(`/item?id=${this.props.id}`);
   };
+
   render() {
     return (
       <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>

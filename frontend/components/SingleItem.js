@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 
 const SingleItemStyles = styled.div`
+  border-radius: 50px;
   max-width: 1200px;
   margin: 2rem auto;
   box-shadow: ${props => props.theme.bs};
@@ -15,14 +16,27 @@ const SingleItemStyles = styled.div`
   grid-auto-flow: column;
   min-height: 800px;
   img {
-    width: 100%;
+    border-radius: 50px;
+    width: 120%;
     height: 100%;
     object-fit: cover;
   }
   .details {
     margin: 3rem;
     font-size: 2rem;
+    margin-left: 22%;
+    text-align: center;
   }
+  p {
+    margin-top: 25%;
+  }
+`;
+
+const H2Underline = styled.h2`
+  text-decoration: underline;
+`;
+const DescUnderline = styled.p`
+  font-style: italic;
 `;
 
 const SINGLE_ITEM_QUERY = gql`
@@ -57,9 +71,9 @@ class SingleItem extends Component {
               </Head>
               <img src={item.largeImage} alt={item.title} />
               <div className='details'>
-                <h2>{item.title}</h2>
-                <p>{item.description}</p>
-                <p>Price: {formatMoney(item.price)}</p>
+                <H2Underline>{item.title}</H2Underline>
+                <DescUnderline>{item.description}</DescUnderline>
+                <p>Price - {formatMoney(item.price)}</p>
               </div>
             </SingleItemStyles>
           );

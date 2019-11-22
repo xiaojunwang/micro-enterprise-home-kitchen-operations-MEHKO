@@ -243,9 +243,17 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var SingleItemStyles = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div.withConfig({
   displayName: "SingleItem__SingleItemStyles",
   componentId: "sc-1v1tzsb-0"
-})(["max-width:1200px;margin:2rem auto;box-shadow:", ";display:grid;grid-auto-columns:1fr;grid-auto-flow:column;min-height:800px;img{width:100%;height:100%;object-fit:cover;}.details{margin:3rem;font-size:2rem;}"], function (props) {
+})(["border-radius:50px;max-width:1200px;margin:2rem auto;box-shadow:", ";display:grid;grid-auto-columns:1fr;grid-auto-flow:column;min-height:800px;img{border-radius:50px;width:120%;height:100%;object-fit:cover;}.details{margin:3rem;font-size:2rem;margin-left:22%;text-align:center;}p{margin-top:25%;}"], function (props) {
   return props.theme.bs;
 });
+var H2Underline = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.h2.withConfig({
+  displayName: "SingleItem__H2Underline",
+  componentId: "sc-1v1tzsb-1"
+})(["text-decoration:underline;"]);
+var DescUnderline = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.p.withConfig({
+  displayName: "SingleItem__DescUnderline",
+  componentId: "sc-1v1tzsb-2"
+})(["font-style:italic;"]);
 var SINGLE_ITEM_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_1___default()(_templateObject());
 
 var SingleItem =
@@ -271,7 +279,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 57
         },
         __self: this
       }, function (_ref) {
@@ -282,21 +290,21 @@ function (_Component) {
           error: error,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 49
+            lineNumber: 63
           },
           __self: this
         });
         if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 50
+            lineNumber: 64
           },
           __self: this
         }, "Loading...");
         if (!data.item) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 51
+            lineNumber: 65
           },
           __self: this
         }, "No Item Found for ", _this.props.id);
@@ -304,19 +312,19 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SingleItemStyles, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 54
+            lineNumber: 68
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 55
+            lineNumber: 69
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 56
+            lineNumber: 70
           },
           __self: this
         }, "MEHKO | ", item.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -324,35 +332,35 @@ function (_Component) {
           alt: item.title,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 72
           },
           __self: this
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "details",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 59
+            lineNumber: 73
           },
           __self: this
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(H2Underline, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 60
+            lineNumber: 74
           },
           __self: this
-        }, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        }, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescUnderline, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 61
+            lineNumber: 75
           },
           __self: this
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 62
+            lineNumber: 76
           },
           __self: this
-        }, "Price: ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price))));
+        }, "Price - ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price))));
       });
     }
   }]);

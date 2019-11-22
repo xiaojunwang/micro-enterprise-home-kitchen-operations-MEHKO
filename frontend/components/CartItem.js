@@ -12,11 +12,12 @@ const CartItemStyles = styled.li`
   align-items: center;
   grid-template-columns: auto 1fr auto;
   img {
+    border-radius: 25px;
     margin-right: 10px;
   }
   h3,
   p {
-    margin: 0;
+    margin-left: 5%;
   }
 `;
 

@@ -3,11 +3,13 @@ import styled from 'styled-components';
 const Item = styled.div`
   background: white;
   border: 1px solid ${props => props.theme.offWhite};
+  border-radius: 30px;
   box-shadow: ${props => props.theme.bs};
   position: relative;
   display: flex;
   flex-direction: column;
   img {
+    border-radius: 30px;
     width: 100%;
     height: 400px;
     object-fit: cover;
