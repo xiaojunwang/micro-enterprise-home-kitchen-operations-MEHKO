@@ -1,10 +1,10 @@
-import Link from "next/link";
-import styled from "styled-components";
-import NProgress from "nprogress";
-import Router from "next/router";
-import Nav from "./Nav";
-import Cart from "./Cart";
-import Search from "./Search";
+import Link from 'next/link';
+import styled from 'styled-components';
+import NProgress from 'nprogress';
+import Router from 'next/router';
+import Nav from './Nav';
+import Cart from './Cart';
+import Search from './Search';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -56,15 +56,15 @@ const StyledHeader = styled.header`
 
 const Header = () => (
   <StyledHeader>
-    <div className="bar">
+    <div className='bar'>
       <Logo>
-        <Link href="/">
+        <Link href='/items'>
           <a>MEHKO</a>
         </Link>
       </Logo>
       <Nav />
     </div>
-    <div className="sub-bar">
+    <div className='sub-bar'>
       <Search />
     </div>
     <Cart />

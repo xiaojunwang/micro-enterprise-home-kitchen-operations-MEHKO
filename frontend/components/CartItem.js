@@ -15,9 +15,12 @@ const CartItemStyles = styled.li`
     border-radius: 25px;
     margin-right: 10px;
   }
-  h3,
+  h3 {
+    margin-left: 5%;
+  }
   p {
     margin-left: 5%;
+    color: gray;
   }
 `;
 
@@ -56,11 +59,10 @@ const CartItem = ({ cartItem }) => {
           </a>
         </Link>
         <p>
-          {formatMoney(cartItem.item.price * cartItem.quantity)}
-          {' - '}
           <em>
-            {cartItem.quantity} &times; {formatMoney(cartItem.item.price)} each
-          </em>
+            {cartItem.quantity} @ {formatMoney(cartItem.item.price)} each
+          </em>{' '}
+          = {formatMoney(cartItem.item.price * cartItem.quantity)}
         </p>
       </div>
 

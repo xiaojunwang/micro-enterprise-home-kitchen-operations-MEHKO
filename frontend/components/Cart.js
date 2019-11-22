@@ -25,11 +25,20 @@ const TOGGLE_CART_MUTATION = gql`
   }
 `;
 
+const CLOSE_CART_MUTATION = gql`
+  mutation {
+    closeCart @client
+  }
+`;
+
 const Composed = adopt({
   user: ({ render }) => <User>{render}</User>, //arrow function gets rid of console warnings, otherwise <User /> works just fine.
-  toggleCart: ({ render }) => (
-    <Mutation mutation={TOGGLE_CART_MUTATION}>{render}</Mutation>
+  closeCart: ({ render }) => (
+    <Mutation mutation={CLOSE_CART_MUTATION}>{render}</Mutation>
   ),
+  // toggleCart: ({ render }) => (
+  //   <Mutation mutation={TOGGLE_CART_MUTATION}>{render}</Mutation>
+  // ),
   localState: ({ render }) => <Query query={LOCAL_STATE_QUERY}>{render}</Query>,
 });
 
@@ -43,16 +52,16 @@ const pStyle = {
 
 const Cart = () => (
   <Composed>
-    {({ user, toggleCart, localState }) => {
+    {({ user, closeCart, localState }) => {
       const me = user.data.me;
       if (!me) return null; //we don't want to show the cart unless person is logged in
 
       return (
-        <CartStyles open={localState.data.cartOpen}>
+        <CartStyles open={localState.data.cartOpen} onMouseLeave={closeCart}>
           {/* ^^ open value live as boolean in Apollo store that can be toggled between true and false. Whenever that is 
       changed anywhere on our page, this will trigger and apply css  */}
           <header>
-            <CloseButton onClick={toggleCart} title='close'>
+            <CloseButton onClick={closeCart} title='close'>
               &times;
             </CloseButton>
             <Supreme>{me.name}'s Cart</Supreme>
@@ -67,7 +76,7 @@ const Cart = () => (
             ))}
           </ul>
           <footer>
-            <p>Subtotal: </p>
+            <p>Subtotal:</p>
             <p>{formatMoney(calcTotalPrice(me.cart))}</p>
             {me.cart.length ? ( //if cart is true, then render the checkout button
               <Payment>
@@ -84,4 +93,4 @@ const Cart = () => (
 );
 
 export default Cart;
-export { LOCAL_STATE_QUERY, TOGGLE_CART_MUTATION };
+export { LOCAL_STATE_QUERY, TOGGLE_CART_MUTATION, CLOSE_CART_MUTATION };

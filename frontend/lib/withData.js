@@ -36,6 +36,18 @@ function createClient({ headers }) {
             cache.writeData(data);
             return data;
           },
+          closeCart(_, variables, { cache }) {
+            cache.readQuery({
+              query: LOCAL_STATE_QUERY,
+            });
+            const data = {
+              data: {
+                cartOpen: false,
+              },
+            };
+            cache.writeData(data);
+            return data;
+          },
         },
       },
       defaults: {

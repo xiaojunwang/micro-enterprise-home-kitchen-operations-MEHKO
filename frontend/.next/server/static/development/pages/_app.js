@@ -97,13 +97,14 @@ module.exports =
 /*!****************************!*\
   !*** ./components/Cart.js ***!
   \****************************/
-/*! exports provided: default, LOCAL_STATE_QUERY, TOGGLE_CART_MUTATION */
+/*! exports provided: default, LOCAL_STATE_QUERY, TOGGLE_CART_MUTATION, CLOSE_CART_MUTATION */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOCAL_STATE_QUERY", function() { return LOCAL_STATE_QUERY; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_CART_MUTATION", function() { return TOGGLE_CART_MUTATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLOSE_CART_MUTATION", function() { return CLOSE_CART_MUTATION; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-apollo */ "react-apollo");
@@ -122,6 +123,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lib_formatMoney__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../lib/formatMoney */ "./lib/formatMoney.js");
 /* harmony import */ var _Payment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Payment */ "./components/Payment.js");
 var _jsxFileName = "/Users/bennywang/Dropbox/Career/Benny's Portfolio/MEHKO/frontend/components/Cart.js";
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n  mutation {\n    closeCart @client\n  }\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject2() {
   var data = _taggedTemplateLiteral(["\n  mutation {\n    toggleCart @client\n  }\n"]);
@@ -160,36 +171,40 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var LOCAL_STATE_QUERY = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject());
 var TOGGLE_CART_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject2());
+var CLOSE_CART_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_2___default()(_templateObject3());
 var Composed = Object(react_adopt__WEBPACK_IMPORTED_MODULE_3__["adopt"])({
   user: function user(_ref) {
     var render = _ref.render;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_User__WEBPACK_IMPORTED_MODULE_4__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 35
       },
       __self: this
     }, render);
   },
   //arrow function gets rid of console warnings, otherwise <User /> works just fine.
-  toggleCart: function toggleCart(_ref2) {
+  closeCart: function closeCart(_ref2) {
     var render = _ref2.render;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_1__["Mutation"], {
-      mutation: TOGGLE_CART_MUTATION,
+      mutation: CLOSE_CART_MUTATION,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 37
       },
       __self: this
     }, render);
   },
+  // toggleCart: ({ render }) => (
+  //   <Mutation mutation={TOGGLE_CART_MUTATION}>{render}</Mutation>
+  // ),
   localState: function localState(_ref3) {
     var render = _ref3.render;
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_1__["Query"], {
       query: LOCAL_STATE_QUERY,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 33
+        lineNumber: 42
       },
       __self: this
     }, render);
@@ -207,53 +222,54 @@ var Cart = function Cart() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Composed, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 54
     },
     __self: this
   }, function (_ref4) {
     var user = _ref4.user,
-        toggleCart = _ref4.toggleCart,
+        closeCart = _ref4.closeCart,
         localState = _ref4.localState;
     var me = user.data.me;
     if (!me) return null; //we don't want to show the cart unless person is logged in
 
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_CartStyles__WEBPACK_IMPORTED_MODULE_5__["default"], {
       open: localState.data.cartOpen,
+      onMouseLeave: closeCart,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 51
+        lineNumber: 60
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 63
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_CloseButton__WEBPACK_IMPORTED_MODULE_7__["default"], {
-      onClick: toggleCart,
+      onClick: closeCart,
       title: "close",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 64
       },
       __self: this
     }, "\xD7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_Supreme__WEBPACK_IMPORTED_MODULE_6__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 58
+        lineNumber: 67
       },
       __self: this
     }, me.name, "'s Cart"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 68
       },
       __self: this
     }, "You Have ", me.cart.length, " Item", me.cart.length > 1 ? 's' : '', " in Your Cart")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 73
       },
       __self: this
     }, me.cart.map(function (cartItem) {
@@ -262,46 +278,46 @@ var Cart = function Cart() {
         cartItem: cartItem,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 75
         },
         __self: this
       });
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 78
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 79
       },
       __self: this
-    }, "Subtotal: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    }, "Subtotal:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 80
       },
       __self: this
     }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_11__["default"])(Object(_lib_calcTotalPrice__WEBPACK_IMPORTED_MODULE_10__["default"])(me.cart))), me.cart.length ? //if cart is true, then render the checkout button
     react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Payment__WEBPACK_IMPORTED_MODULE_12__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 73
+        lineNumber: 82
       },
       __self: this
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_styles_SickButton__WEBPACK_IMPORTED_MODULE_8__["default"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74
+        lineNumber: 83
       },
       __self: this
     }, "Checkout")) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
       style: pStyle,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 77
+        lineNumber: 86
       },
       __self: this
     }, "No Item to Checkout")));
@@ -419,7 +435,7 @@ var _jsxFileName = "/Users/bennywang/Dropbox/Career/Benny's Portfolio/MEHKO/fron
 var CartItemStyles = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.li.withConfig({
   displayName: "CartItem__CartItemStyles",
   componentId: "nfpkeu-0"
-})(["padding:0.7rem 0;border-bottom:1px solid ", ";display:grid;align-items:center;grid-template-columns:auto 1fr auto;img{border-radius:25px;margin-right:10px;}h3,p{margin-left:5%;}"], function (props) {
+})(["padding:0.7rem 0;border-bottom:1px solid ", ";display:grid;align-items:center;grid-template-columns:auto 1fr auto;img{border-radius:25px;margin-right:10px;}h3{margin-left:5%;}p{margin-left:5%;color:gray;}"], function (props) {
   return props.theme.lightgrey;
 });
 
@@ -429,21 +445,21 @@ var CartItem = function CartItem(_ref) {
   if (!cartItem.item) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CartItemStyles, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 31
     },
     __self: this
   }, "This Item has been removed", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RemoveFromCart__WEBPACK_IMPORTED_MODULE_4__["default"], {
     id: cartItem.id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 33
     },
     __self: this
   }));
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CartItemStyles, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 37
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -455,13 +471,13 @@ var CartItem = function CartItem(_ref) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 38
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 43
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -470,14 +486,14 @@ var CartItem = function CartItem(_ref) {
     alt: cartItem.item.title,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 44
     },
     __self: this
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "cart-item-details",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 51
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_5___default.a, {
@@ -489,44 +505,44 @@ var CartItem = function CartItem(_ref) {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 52
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 57
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 58
     },
     __self: this
   }, cartItem.item.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
-    },
-    __self: this
-  }, Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_3__["default"])(cartItem.item.price * cartItem.quantity), ' - ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", {
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 61
     },
     __self: this
-  }, cartItem.quantity, " \xD7 ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_3__["default"])(cartItem.item.price), " each"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 62
+    },
+    __self: this
+  }, cartItem.quantity, " @ ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_3__["default"])(cartItem.item.price), " each"), ' ', "= ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_3__["default"])(cartItem.item.price * cartItem.quantity))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RemoveFromCart__WEBPACK_IMPORTED_MODULE_4__["default"], {
     id: cartItem.id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 70
     },
     __self: this
   })));
@@ -705,7 +721,7 @@ var Header = function Header() {
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/",
+    href: "/items",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 61
@@ -1918,7 +1934,7 @@ __webpack_require__.r(__webpack_exports__);
 var CloseButton = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.button.withConfig({
   displayName: "CloseButton",
   componentId: "oxgx8g-0"
-})(["background:black;color:white;font-size:3rem;border:0;position:absolute;z-index:2;right:0;"]);
+})(["background:black;color:white;font-size:4rem;border:0;position:absolute;z-index:2;right:0;text-align:center;justify-content:center;"]);
 /* harmony default export */ __webpack_exports__["default"] = (CloseButton);
 
 /***/ }),
@@ -2147,6 +2163,19 @@ function createClient(_ref) {
             var data = {
               data: {
                 cartOpen: !cartOpen
+              }
+            };
+            cache.writeData(data);
+            return data;
+          },
+          closeCart: function closeCart(_, variables, _ref3) {
+            var cache = _ref3.cache;
+            cache.readQuery({
+              query: _components_Cart__WEBPACK_IMPORTED_MODULE_3__["LOCAL_STATE_QUERY"]
+            });
+            var data = {
+              data: {
+                cartOpen: false
               }
             };
             cache.writeData(data);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
 import Error from './ErrorMessage';
 import Head from 'next/head';
 import styled from 'styled-components';
