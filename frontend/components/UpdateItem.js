@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import { Mutation, Query } from "react-apollo";
-import gql from "graphql-tag";
-import Router from "next/router";
-import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
-import Error from "./ErrorMessage";
+import React, { Component } from 'react';
+import { Mutation, Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import Form from './styles/Form';
+import Error from './ErrorMessage';
+import Router from 'next/router';
 
 const SINGLE_ITEM_QUERY = gql`
   query SINGLE_ITEM_QUERY($id: ID!) {
@@ -41,21 +40,19 @@ class UpdateItem extends Component {
   state = {};
   handleChange = e => {
     const { name, type, value } = e.target;
-    const val = type === "number" ? parseFloat(value) : value;
+    const val = type === 'number' ? parseFloat(value) : value;
     this.setState({ [name]: val });
   };
 
   updateItem = async (e, updateItemMutation) => {
     e.preventDefault();
-    console.log("updating item");
-    console.log(this.state);
     const res = await updateItemMutation({
       variables: {
         id: this.props.id,
-        ...this.state
-      }
+        ...this.state,
+      },
     });
-    console.log("updated");
+    Router.push(`/item?id=${this.props.id}`);
   };
   render() {
     return (
@@ -70,45 +67,45 @@ class UpdateItem extends Component {
                   <Form onSubmit={e => this.updateItem(e, updateItem)}>
                     <Error error={error} />
                     <fieldset disabled={loading} aria-busy={loading}>
-                      <label htmlFor="title">
+                      <label htmlFor='title'>
                         Title
                         <input
-                          type="text"
-                          id="title"
-                          name="title"
-                          placeholder="Title"
+                          type='text'
+                          id='title'
+                          name='title'
+                          placeholder='Title'
                           required
                           defaultValue={data.item.title}
                           onChange={this.handleChange}
                         />
                       </label>
 
-                      <label htmlFor="price">
+                      <label htmlFor='price'>
                         Price
                         <input
-                          type="number"
-                          id="price"
-                          name="price"
-                          placeholder="Price"
+                          type='number'
+                          id='price'
+                          name='price'
+                          placeholder='Price'
                           required
                           defaultValue={data.item.price}
                           onChange={this.handleChange}
                         />
                       </label>
 
-                      <label htmlFor="description">
+                      <label htmlFor='description'>
                         Description
                         <textarea
-                          id="description"
-                          name="description"
-                          placeholder="Enter A Description"
+                          id='description'
+                          name='description'
+                          placeholder='Enter A Description'
                           required
                           defaultValue={data.item.description}
                           onChange={this.handleChange}
                         />
                       </label>
-                      <button type="submit">
-                        Sav{loading ? "ing" : "e"} Changes
+                      <button type='submit'>
+                        Sav{loading ? 'ing' : 'e'} Changes
                       </button>
                     </fieldset>
                   </Form>

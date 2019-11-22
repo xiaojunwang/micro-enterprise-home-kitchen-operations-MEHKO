@@ -357,11 +357,11 @@ function (_Component) {
             lineNumber: 38
           },
           __self: this
-        }, "Success! Check your email (be sure to look in your spam folder aswell) for a reset link."), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
+        }, "Check email inbox or spam folder for a reset link!"), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("label", {
           htmlFor: "email",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 43
+            lineNumber: 40
           },
           __self: this
         }, "Email", react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("input", {
@@ -372,14 +372,14 @@ function (_Component) {
           onChange: _this2.saveToState,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 45
+            lineNumber: 42
           },
           __self: this
         })), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           type: "submit",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 53
+            lineNumber: 50
           },
           __self: this
         }, "Request Reset")));

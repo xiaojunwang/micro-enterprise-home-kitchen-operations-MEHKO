@@ -35,10 +35,7 @@ class RequestReset extends Component {
               <h2>Request A Password Reset</h2>
               <Error error={error} />
               {!error && !loading && called && (
-                <p>
-                  Success! Check your email (be sure to look in your spam folder
-                  aswell) for a reset link.
-                </p>
+                <p>Check email inbox or spam folder for a reset link!</p>
               )}
               <label htmlFor='email'>
                 Email

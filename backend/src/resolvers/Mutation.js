@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { randomBytes } = require('crypto'); //built in node module for encrypting tolken
-const { promisify } = require('util'); //turn randomByes to promised function, as it's currently synchronous function
+const { randomBytes } = require('crypto'); //for encrypting token
+const { promisify } = require('util'); //converts randomByes to a promise
 const { transport, makeANiceEmail } = require('../mail');
 const stripe = require('../stripe');
 const { hasPermission } = require('../utils');
@@ -12,11 +12,11 @@ const Mutations = {
     if (!ctx.request.userId) {
       throw new Error('You must be logged in to do that.');
     }
-
     const item = await ctx.db.mutation.createItem(
       {
         data: {
-          // This is how to create a relationship between the Item and the User
+          //argument for createItem method
+          //create a relationship between the Item <-> User
           user: {
             connect: {
               id: ctx.request.userId,
@@ -27,32 +27,27 @@ const Mutations = {
       },
       info
     );
-
-    console.log(item);
-
     return item;
   },
 
   updateItem(parent, args, ctx, info) {
-    //first take copy of the updates
+    //1. take copy of the updates
     const updates = { ...args };
-    //remove the ID from the updates because ID is not something we can update
+    //2. remove the ID from updates because ID is not something we want to update
     delete updates.id;
-    // run the update method
+    //3. run the updateItem method
     return ctx.db.mutation.updateItem(
       {
-        data: updates,
+        data: updates, //data tells us what data we want to update
         where: {
+          //where tells us which item to update and id is what identifies the item we want to update
           id: args.id,
         },
       },
       info
+      //info contains the query we send from client side and
+      //tells the mutation what to return, in this case based on our schema, we're telling it to return an Item
     );
-    //ctx is context in the request
-    //db is how we expose the actual prisma database to ourselves
-    //after that we either have a query or a mutation
-    //and we have access to all of the mutations that are generated in prisma.graphql
-    //info is what the updateItem function knows what to return
   },
 
   async deleteItem(parent, args, ctx, info) {
@@ -152,9 +147,9 @@ const Mutations = {
       from: 'Bennyxjwang@gmail.com',
       to: user.email,
       subject: 'Your password reset token',
-      html: makeANiceEmail(`Your password reset token is here!
+      html: makeANiceEmail(`Your MEHKO password reset token is here!
        \n\n 
-       <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click Here to Reset</a>`),
+       <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click here to reset your password on MEHKO</a>`),
     });
 
     //4. return the success message

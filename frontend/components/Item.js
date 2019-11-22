@@ -39,7 +39,7 @@ export default class Item extends Component {
         <div className='buttonList'>
           <Link
             href={{
-              pathname: 'update',
+              pathname: '/update',
               query: { id: item.id },
             }}>
             <a>Edit</a>
