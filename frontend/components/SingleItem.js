@@ -5,6 +5,8 @@ import Error from './ErrorMessage';
 import Head from 'next/head';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
+import AddToCart from './AddToCart';
+import RemoveOne from './RemoveOne';
 
 const SingleItemStyles = styled.div`
   border-radius: 50px;
@@ -29,6 +31,15 @@ const SingleItemStyles = styled.div`
   }
   p {
     margin-top: 25%;
+  }
+
+  button {
+    border-radius: 25px;
+    background: whitesmoke;
+    margin-top: 95%;
+    cursor: pointer;
+    font-size: 150%;
+    inline-size: 90%;
   }
 `;
 
@@ -74,6 +85,8 @@ class SingleItem extends Component {
                 <H2Underline>{item.title}</H2Underline>
                 <DescUnderline>{item.description}</DescUnderline>
                 <p>Price - {formatMoney(item.price)}</p>
+                <AddToCart id={item.id} />
+                <RemoveOne id={item.id} />
               </div>
             </SingleItemStyles>
           );

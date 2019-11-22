@@ -57,7 +57,8 @@ const Cart = () => (
       if (!me) return null; //we don't want to show the cart unless person is logged in
 
       return (
-        <CartStyles open={localState.data.cartOpen} onMouseLeave={closeCart}>
+        <CartStyles open={localState.data.cartOpen}>
+          {/* onMouseLeave={closeCart}> */}
           {/* ^^ open value live as boolean in Apollo store that can be toggled between true and false. Whenever that is 
       changed anywhere on our page, this will trigger and apply css  */}
           <header>

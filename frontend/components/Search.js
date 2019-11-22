@@ -1,10 +1,10 @@
-import React from "react";
-import Downshift, { resetIdCounter } from "downshift";
-import Router from "next/router";
-import { ApolloConsumer } from "react-apollo";
-import gql from "graphql-tag";
-import debounce from "lodash.debounce"; //makes sure we're not unnessarily firing off after each key press, but instead after a set (i.e. 350ms) time.
-import { DropDown, DropDownItem, SearchStyles } from "./styles/DropDown";
+import React from 'react';
+import Downshift, { resetIdCounter } from 'downshift';
+import Router from 'next/router';
+import { ApolloConsumer } from 'react-apollo';
+import gql from 'graphql-tag';
+import debounce from 'lodash.debounce'; //makes sure we're not unnessarily firing off after each key press, but instead after a set (i.e. 350ms) time.
+import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_ITEMS_QUERY = gql`
   query SEARCH_ITEMS_QUERY($searchTerm: String!) {
@@ -27,32 +27,32 @@ const SEARCH_ITEMS_QUERY = gql`
 function routeToItem(item) {
   // console.log(item);
   Router.push({
-    pathname: "/item",
+    pathname: '/item',
     query: {
-      id: item.id
-    }
+      id: item.id,
+    },
   });
 }
 
 class AutoComplete extends React.Component {
   state = {
     items: [],
-    loading: false //because we don't have the convience of our query or mutation component, we have to take care of the loading state ourselves
+    loading: false, //because we don't have the convience of our query or mutation component, we have to take care of the loading state ourselves
   };
   onChange = debounce(async (e, client) => {
-    console.log("searching");
+    console.log('searching');
     console.log(client);
     // turn loading on
     this.setState({ loading: true });
     //Manually query apollo client
     const res = await client.query({
       query: SEARCH_ITEMS_QUERY,
-      variables: { searchTerm: e.target.value }
+      variables: { searchTerm: e.target.value },
     });
     console.log(res);
     this.setState({
       items: res.data.items,
-      loading: false
+      loading: false,
     });
   }, 350);
   render() {
@@ -61,29 +61,28 @@ class AutoComplete extends React.Component {
       <SearchStyles>
         <Downshift
           onChange={routeToItem}
-          itemToString={item => (item === null ? "" : item.title)}
-        >
+          itemToString={item => (item === null ? '' : item.title)}>
           {/* specify how items get turn to string, instead of outputting 'object Object' */}
           {({
             getInputProps,
             getItemProps,
             isOpen, //closes the search when clicking away from searchbar
             inputValue,
-            highlightedIndex
+            highlightedIndex,
           }) => (
             <div>
               <ApolloConsumer>
                 {client => (
                   <input
                     {...getInputProps({
-                      type: "search",
-                      placeholder: "search for an item",
-                      id: "search",
-                      className: this.state.loading ? "loading" : "",
+                      type: 'search',
+                      placeholder: 'search for an item',
+                      id: 'search',
+                      className: this.state.loading ? 'loading' : '',
                       onChange: e => {
                         e.persist();
                         this.onChange(e, client);
-                      }
+                      },
                     })}
                   />
                   //what this does:
@@ -98,9 +97,8 @@ class AutoComplete extends React.Component {
                     <DropDownItem
                       {...getItemProps({ item })}
                       key={item.id}
-                      highlighted={index === highlightedIndex}
-                    >
-                      <img width="50" src={item.image} alt={item.title} />
+                      highlighted={index === highlightedIndex}>
+                      <img width='50' src={item.image} alt={item.title} />
                       {item.title}
                     </DropDownItem>
                   ))}

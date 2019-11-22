@@ -193,7 +193,7 @@ function (_React$Component) {
             lineNumber: 27
           },
           __self: this
-        }, " Add", loading ? 'ing' : '', " To Cart \uD83D\uDED2 "));
+        }, " Add", loading ? 'ing' : '', " to Cart \uD83D\uDED2 "));
       });
     }
   }]);

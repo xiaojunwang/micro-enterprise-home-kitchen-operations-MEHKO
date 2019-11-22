@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import formatMoney from '../lib/formatMoney';
 import RemoveFromCart from './RemoveFromCart';
 import Link from 'next/link';
+import AddOne from './AddOne';
+import RemoveOne from './RemoveOne';
 
 const CartItemStyles = styled.li`
   padding: 0.7rem 0;
@@ -21,6 +23,15 @@ const CartItemStyles = styled.li`
   p {
     margin-left: 5%;
     color: gray;
+  }
+  .delete {
+    grid-column-end: five;
+  }
+  .addremove {
+    justify-self: start;
+  }
+  button {
+    cursor: pointer;
   }
 `;
 
@@ -65,8 +76,11 @@ const CartItem = ({ cartItem }) => {
           = {formatMoney(cartItem.item.price * cartItem.quantity)}
         </p>
       </div>
-
-      <div>
+      <div className='addremove'>
+        <RemoveOne id={cartItem.item.id} />
+        <AddOne id={cartItem.item.id} />
+      </div>
+      <div className='delete'>
         <RemoveFromCart id={cartItem.id} />
       </div>
     </CartItemStyles>

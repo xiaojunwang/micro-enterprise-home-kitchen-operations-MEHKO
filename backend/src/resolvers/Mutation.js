@@ -241,7 +241,7 @@ const Mutations = {
     // console.log(existingCartItem); //existingCartItem returns a promise, therefore need to await this
     //3. check if that item is already in their cart and increment by 1 if it is
     if (existingCartItem) {
-      console.log('This item is already in their cart');
+      // console.log('This item is already in their cart');
       return ctx.db.mutation.updateCartItem(
         {
           where: { id: existingCartItem.id }, //where id is equal to existingcartitem.id
@@ -264,6 +264,26 @@ const Mutations = {
       },
       info
     );
+  },
+
+  async removeOne(parent, args, ctx, info) {
+    const { userId } = ctx.request;
+    const [existingCartItem] = await ctx.db.query.cartItems({
+      where: {
+        user: { id: userId },
+        item: { id: args.id },
+      },
+    });
+
+    if (existingCartItem.quantity > 1) {
+      return ctx.db.mutation.updateCartItem(
+        {
+          where: { id: existingCartItem.id },
+          data: { quantity: existingCartItem.quantity - 1 },
+        },
+        info
+      );
+    }
   },
 
   async removeFromCart(parent, args, ctx, info) {
