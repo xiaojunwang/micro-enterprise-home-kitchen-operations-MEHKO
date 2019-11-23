@@ -33,9 +33,8 @@ class RemoveFromCart extends React.Component {
   update = (cache, payload) => {
     //cache is the apollo cache, payload is the dump of information that's returned from the server once it's done
     //1. read the cache
-    console.log('running remove from cart updatre fn');
     const data = cache.readQuery({ query: CURRENT_USER_QUERY });
-    console.log(data);
+    // console.log(data);
     //2. remove that item from the cart
     const cartItemId = payload.data.removeFromCart.id;
     data.me.cart = data.me.cart.filter(cartItem => cartItem.id !== cartItemId);

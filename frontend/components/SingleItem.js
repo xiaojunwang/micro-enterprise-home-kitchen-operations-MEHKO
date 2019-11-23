@@ -86,7 +86,6 @@ class SingleItem extends Component {
                 <DescUnderline>{item.description}</DescUnderline>
                 <p>Price - {formatMoney(item.price)}</p>
                 <AddToCart id={item.id} />
-                <RemoveOne id={item.id} />
               </div>
             </SingleItemStyles>
           );

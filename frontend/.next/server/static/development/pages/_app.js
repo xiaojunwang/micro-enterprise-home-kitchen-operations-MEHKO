@@ -1651,11 +1651,10 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "update", function (cache, payload) {
       //cache is the apollo cache, payload is the dump of information that's returned from the server once it's done
       //1. read the cache
-      console.log('running remove from cart updatre fn');
       var data = cache.readQuery({
         query: _User__WEBPACK_IMPORTED_MODULE_5__["CURRENT_USER_QUERY"]
-      });
-      console.log(data); //2. remove that item from the cart
+      }); // console.log(data);
+      //2. remove that item from the cart
 
       var cartItemId = payload.data.removeFromCart.id;
       data.me.cart = data.me.cart.filter(function (cartItem) {
@@ -1694,7 +1693,7 @@ function (_React$Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48
+          lineNumber: 47
         },
         __self: this
       }, function (removeFromCart, _ref) {
@@ -1710,7 +1709,7 @@ function (_React$Component) {
           title: "Delete Item",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 63
+            lineNumber: 62
           },
           __self: this
         }, "\u24CD");

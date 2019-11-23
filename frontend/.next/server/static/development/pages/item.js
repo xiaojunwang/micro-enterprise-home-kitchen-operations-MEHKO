@@ -591,13 +591,6 @@ function (_Component) {
             lineNumber: 88
           },
           __self: this
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_RemoveOne__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          id: item.id,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 89
-          },
-          __self: this
         })));
       });
     }
