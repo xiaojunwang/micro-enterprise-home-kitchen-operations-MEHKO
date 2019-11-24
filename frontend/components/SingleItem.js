@@ -6,7 +6,6 @@ import Head from 'next/head';
 import styled from 'styled-components';
 import formatMoney from '../lib/formatMoney';
 import AddToCart from './AddToCart';
-import RemoveOne from './RemoveOne';
 
 const SingleItemStyles = styled.div`
   border-radius: 50px;
@@ -19,34 +18,44 @@ const SingleItemStyles = styled.div`
   min-height: 800px;
   img {
     border-radius: 50px;
-    width: 120%;
+    width: 110%;
     height: 100%;
     object-fit: cover;
   }
   .details {
     margin: 3rem;
     font-size: 2rem;
-    margin-left: 22%;
+    margin-left: 15%;
     text-align: center;
   }
   p {
-    margin-top: 25%;
+    em {
+      color: #3399ff;
+      margin-top: 0;
+    }
+    margin-top: 20%;
   }
-
   button {
     border-radius: 25px;
     background: whitesmoke;
-    margin-top: 95%;
+    margin-top: 10%;
     cursor: pointer;
     font-size: 150%;
     inline-size: 90%;
+    :hover {
+      color: white;
+      background-color: #3399ff;
+    }
+  }
+  h3 {
+    margin-top: 25%;
   }
 `;
 
 const H2Underline = styled.h2`
   text-decoration: underline;
 `;
-const DescUnderline = styled.p`
+const DescUnderline = styled.h3`
   font-style: italic;
 `;
 
@@ -58,6 +67,9 @@ const SINGLE_ITEM_QUERY = gql`
       description
       largeImage
       price
+      user {
+        name
+      }
     }
   }
 `;
@@ -83,9 +95,14 @@ class SingleItem extends Component {
               <img src={item.largeImage} alt={item.title} />
               <div className='details'>
                 <H2Underline>{item.title}</H2Underline>
+                <p>
+                  Crafted and Sold by <em>{item.user.name}</em>
+                </p>
                 <DescUnderline>{item.description}</DescUnderline>
                 <p>Price - {formatMoney(item.price)}</p>
-                <AddToCart id={item.id} />
+                <div className='addToCart'>
+                  <AddToCart id={item.id} />
+                </div>
               </div>
             </SingleItemStyles>
           );

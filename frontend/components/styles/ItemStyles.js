@@ -21,6 +21,11 @@ const Item = styled.div`
     flex-grow: 1;
     padding: 0 3rem;
     font-size: 1.5rem;
+    em {
+      strong {
+        color: #3399ff;
+      }
+    }
   }
   .buttonList {
     display: grid;

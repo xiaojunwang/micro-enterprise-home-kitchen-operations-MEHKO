@@ -15,6 +15,7 @@ export default class Item extends Component {
 
   render() {
     const { item } = this.props;
+    console.log(item);
     return (
       <ItemStyles>
         <Link
@@ -34,7 +35,11 @@ export default class Item extends Component {
           </Link>
         </Title>
         <PriceTag>{formatMoney(item.price)}</PriceTag>
-        <p>{item.description}</p>
+        <p>
+          <em>
+            Crafted and Sold By: <strong>{item.user.name}</strong>
+          </em>
+        </p>
 
         <div className='buttonList'>
           <Link

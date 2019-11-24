@@ -292,113 +292,6 @@ DisplayError.propTypes = {
 
 /***/ }),
 
-/***/ "./components/RemoveOne.js":
-/*!*********************************!*\
-  !*** ./components/RemoveOne.js ***!
-  \*********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-apollo */ "react-apollo");
-/* harmony import */ var react_apollo__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_apollo__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "prop-types");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! graphql-tag */ "graphql-tag");
-/* harmony import */ var graphql_tag__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(graphql_tag__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./User */ "./components/User.js");
-var _jsxFileName = "/Users/bennywang/Dropbox/Career/Benny's Portfolio/MEHKO/frontend/components/RemoveOne.js";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  mutation removeOne($id: ID!) {\n    removeOne(id: $id) {\n      id\n      quantity\n    }\n  }\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-var REMOVE_ONE_MUTATION = graphql_tag__WEBPACK_IMPORTED_MODULE_3___default()(_templateObject());
-
-var RemoveOne =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(RemoveOne, _React$Component);
-
-  function RemoveOne() {
-    _classCallCheck(this, RemoveOne);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(RemoveOne).apply(this, arguments));
-  }
-
-  _createClass(RemoveOne, [{
-    key: "render",
-    value: function render() {
-      var id = this.props.id;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_apollo__WEBPACK_IMPORTED_MODULE_1__["Mutation"], {
-        mutation: REMOVE_ONE_MUTATION,
-        variables: {
-          id: id
-        },
-        refetchQueries: [{
-          query: _User__WEBPACK_IMPORTED_MODULE_4__["CURRENT_USER_QUERY"]
-        }],
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21
-        },
-        __self: this
-      }, function (removeOne, _ref) {
-        var loading = _ref.loading;
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          disabled: loading,
-          onClick: removeOne,
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 26
-          },
-          __self: this
-        }, "\uFF0D");
-      });
-    }
-  }]);
-
-  return RemoveOne;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (RemoveOne);
-
-/***/ }),
-
 /***/ "./components/SingleItem.js":
 /*!**********************************!*\
   !*** ./components/SingleItem.js ***!
@@ -422,7 +315,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../lib/formatMoney */ "./lib/formatMoney.js");
 /* harmony import */ var _AddToCart__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AddToCart */ "./components/AddToCart.js");
-/* harmony import */ var _RemoveOne__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./RemoveOne */ "./components/RemoveOne.js");
 var _jsxFileName = "/Users/bennywang/Dropbox/Career/Benny's Portfolio/MEHKO/frontend/components/SingleItem.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -444,7 +336,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  query SINGLE_ITEM_QUERY($id: ID!) {\n    item(where: { id: $id }) {\n      id\n      title\n      description\n      largeImage\n      price\n    }\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  query SINGLE_ITEM_QUERY($id: ID!) {\n    item(where: { id: $id }) {\n      id\n      title\n      description\n      largeImage\n      price\n      user {\n        name\n      }\n    }\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -463,18 +355,17 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-
 var SingleItemStyles = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div.withConfig({
   displayName: "SingleItem__SingleItemStyles",
   componentId: "sc-1v1tzsb-0"
-})(["border-radius:50px;max-width:1200px;margin:2rem auto;box-shadow:", ";display:grid;grid-auto-columns:1fr;grid-auto-flow:column;min-height:800px;img{border-radius:50px;width:120%;height:100%;object-fit:cover;}.details{margin:3rem;font-size:2rem;margin-left:22%;text-align:center;}p{margin-top:25%;}button{border-radius:25px;background:whitesmoke;margin-top:95%;cursor:pointer;font-size:150%;inline-size:90%;}"], function (props) {
+})(["border-radius:50px;max-width:1200px;margin:2rem auto;box-shadow:", ";display:grid;grid-auto-columns:1fr;grid-auto-flow:column;min-height:800px;img{border-radius:50px;width:110%;height:100%;object-fit:cover;}.details{margin:3rem;font-size:2rem;margin-left:15%;text-align:center;}p{em{color:#3399ff;margin-top:0;}margin-top:20%;}button{border-radius:25px;background:whitesmoke;margin-top:10%;cursor:pointer;font-size:150%;inline-size:90%;:hover{color:white;background-color:#3399ff;}}h3{margin-top:25%;}"], function (props) {
   return props.theme.bs;
 });
 var H2Underline = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.h2.withConfig({
   displayName: "SingleItem__H2Underline",
   componentId: "sc-1v1tzsb-1"
 })(["text-decoration:underline;"]);
-var DescUnderline = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.p.withConfig({
+var DescUnderline = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.h3.withConfig({
   displayName: "SingleItem__DescUnderline",
   componentId: "sc-1v1tzsb-2"
 })(["font-style:italic;"]);
@@ -503,7 +394,7 @@ function (_Component) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 80
         },
         __self: this
       }, function (_ref) {
@@ -514,21 +405,21 @@ function (_Component) {
           error: error,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 74
+            lineNumber: 86
           },
           __self: this
         });
         if (loading) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 75
+            lineNumber: 87
           },
           __self: this
         }, "Loading...");
         if (!data.item) return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 76
+            lineNumber: 88
           },
           __self: this
         }, "No Item Found for ", _this.props.id);
@@ -536,19 +427,19 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SingleItemStyles, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 79
+            lineNumber: 91
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_head__WEBPACK_IMPORTED_MODULE_4___default.a, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 80
+            lineNumber: 92
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("title", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 81
+            lineNumber: 93
           },
           __self: this
         }, "MEHKO | ", item.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -556,42 +447,61 @@ function (_Component) {
           alt: item.title,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 83
+            lineNumber: 95
           },
           __self: this
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "details",
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 84
+            lineNumber: 96
           },
           __self: this
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(H2Underline, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 85
+            lineNumber: 97
           },
           __self: this
-        }, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescUnderline, {
+        }, item.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 86
+            lineNumber: 98
+          },
+          __self: this
+        }, "Crafted and Sold by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 99
+          },
+          __self: this
+        }, item.user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescUnderline, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 101
           },
           __self: this
         }, item.description), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 87
+            lineNumber: 102
           },
           __self: this
-        }, "Price - ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddToCart__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        }, "Price - ", Object(_lib_formatMoney__WEBPACK_IMPORTED_MODULE_6__["default"])(item.price)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "addToCart",
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 103
+          },
+          __self: this
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_AddToCart__WEBPACK_IMPORTED_MODULE_7__["default"], {
           id: item.id,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 88
+            lineNumber: 104
           },
           __self: this
-        })));
+        }))));
       });
     }
   }]);
