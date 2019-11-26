@@ -15,11 +15,7 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/items": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/item": [
+    "/orders": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
