@@ -13,7 +13,7 @@ function createClient({ headers }) {
         fetchOptions: {
           credentials: 'include',
         },
-        headers,
+        headers: { cookie: headers.cookie },
       });
     },
     //local data
