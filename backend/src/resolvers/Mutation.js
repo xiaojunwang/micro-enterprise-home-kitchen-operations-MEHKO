@@ -115,7 +115,6 @@ const Mutations = {
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     //4. set the cookie with the token
     ctx.response.cookie('token', token, {
-      domain: 'https://mehko.net/',
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365,
     });

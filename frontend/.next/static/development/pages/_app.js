@@ -2358,9 +2358,7 @@ function createClient(_ref) {
         fetchOptions: {
           credentials: 'include'
         },
-        headers: {
-          cookie: headers.cookie
-        }
+        headers: headers
       });
     },
     //local data
