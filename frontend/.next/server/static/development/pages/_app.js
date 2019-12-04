@@ -2460,13 +2460,15 @@ __webpack_require__.r(__webpack_exports__);
 function createClient(_ref) {
   var headers = _ref.headers;
   return new apollo_boost__WEBPACK_IMPORTED_MODULE_1___default.a({
-    uri:  true ? _config__WEBPACK_IMPORTED_MODULE_2__["endpoint"] : undefined,
+    uri: apolloUri,
     request: function request(operation) {
       operation.setContext({
         fetchOptions: {
           credentials: 'include'
         },
-        headers: headers
+        headers: {
+          cookie: headers.cookie
+        }
       });
     },
     //local data
