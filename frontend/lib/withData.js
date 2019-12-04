@@ -7,7 +7,7 @@ import { LOCAL_STATE_QUERY } from '../components/Cart';
 
 function createClient({ headers }) {
   return new ApolloClient({
-    uri: apolloUri,
+    uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
     request: operation => {
       operation.setContext({
         fetchOptions: {
