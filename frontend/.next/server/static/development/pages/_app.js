@@ -1039,7 +1039,7 @@ var Meta = function Meta() {
     __self: this
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("link", {
     rel: "shortcut icon",
-    href: "/static/favicon.ico",
+    href: "/static/favicon.png",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -2389,7 +2389,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "perPage", function() { return perPage; });
 // This is client side config only - don't put anything in here that shouldn't be public!
 var endpoint = "http://localhost:4444";
-var prodEndpoint = "https://mehko.net";
+var prodEndpoint = "https://www.mehko.net/";
 var perPage = 4;
 
 /***/ }),
@@ -2460,14 +2460,14 @@ __webpack_require__.r(__webpack_exports__);
 function createClient(_ref) {
   var headers = _ref.headers;
   return new apollo_boost__WEBPACK_IMPORTED_MODULE_1___default.a({
-    uri: apolloUri,
+    uri:  true ? _config__WEBPACK_IMPORTED_MODULE_2__["endpoint"] : undefined,
     request: function request(operation) {
       operation.setContext({
         fetchOptions: {
           credentials: 'include'
         },
         headers: {
-          cookie: headers.cookie
+          cookie: headers && headers.cookie
         }
       });
     },

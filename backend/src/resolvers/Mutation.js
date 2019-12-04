@@ -115,15 +115,25 @@ const Mutations = {
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     //4. set the cookie with the token
     ctx.response.cookie('token', token, {
-      domain: 'mehko.net',
+      domain:
+        process.env.NODE_ENV === 'development'
+          ? process.env.LOCAL_DOMAIN
+          : process.env.APP_DOMAIN,
+      secure: process.env.NODE_ENV === 'development' ? false : true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365,
+      sameSite: 'lax',
     });
     //5. return the user
     return user;
   },
   signout(parent, args, ctx, info) {
-    ctx.response.clearCookie('token');
+    ctx.response.clearCookie('token', {
+      domain:
+        process.env.NODE_ENV === 'development'
+          ? process.env.LOCAL_DOMAIN
+          : process.env.APP_DOMAIN,
+    });
     return { message: 'Goodbye!' };
   },
 
