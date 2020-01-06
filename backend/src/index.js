@@ -41,9 +41,9 @@ server.start(
   {
     cors: {
       credentials: true,
-      origin: process.env.FRONTEND_URL,
-      rejectUnauthorized: false
-    }
+      origin: process.env.FRONTEND_URL
+    },
+    rejectUnauthorized: false
   },
   deets => {
     console.log(`Server is now running on port http:/localhost:${deets.port}`);
