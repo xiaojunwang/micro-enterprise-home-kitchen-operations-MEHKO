@@ -2,6 +2,7 @@
   "name": "mehko-frontend",
   "version": "1.0.0",
   "description": "MEHKO! MicroEnterprise Home Kitchen Operation Platform",
+  "homepage": "https://mehko-next-prod.herokuapp.com",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",
