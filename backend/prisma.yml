@@ -1,6 +1,7 @@
 #endpoint: ${env:PRISMA_ENDPOINT}
 #endpoint: https://mehko-production-355ab4e32e.herokuapp.com/mehko-production/prod
-endpoint: https://mehko-prisma-prod-b2ebaf7b40.herokuapp.com/mehko-prod/prod
+#endpoint: https://mehko-prisma-prod-b2ebaf7b40.herokuapp.com/mehko-prod/prod
+endpoint: https://mehko-prisma-prod-09aea0d745.herokuapp.com/mehko-prisma-prod/prod
 datamodel: datamodel.prisma
 secret: ${env:PRISMA_SECRET}
 

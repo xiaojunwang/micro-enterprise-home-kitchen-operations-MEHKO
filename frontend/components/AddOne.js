@@ -7,12 +7,12 @@ import { ADD_TO_CART_MUTATION } from './AddToCart';
 class AddOne extends React.Component {
   render() {
     const { id } = this.props;
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <Mutation
         mutation={ADD_TO_CART_MUTATION}
         variables={{
-          id: id,
+          id: id
         }}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
         {(addToCart, { error, loading }) => (
