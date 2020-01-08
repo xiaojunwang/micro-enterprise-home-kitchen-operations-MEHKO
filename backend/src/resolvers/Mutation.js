@@ -19,11 +19,11 @@ const Mutations = {
           //create a relationship between the Item <-> User
           user: {
             connect: {
-              id: ctx.request.userId,
-            },
+              id: ctx.request.userId
+            }
           },
-          ...args,
-        },
+          ...args
+        }
       },
       info
     );
@@ -41,8 +41,8 @@ const Mutations = {
         data: updates, //data tells us what data we want to update
         where: {
           //where tells us which item to update and id is what identifies the item we want to update
-          id: args.id,
-        },
+          id: args.id
+        }
       },
       info
       //info contains the query we send from client side and
@@ -80,12 +80,12 @@ const Mutations = {
         data: {
           ...args,
           password: password,
-          permissions: { set: ['USER'] }, //everyone who signs up defaults to USER permission
+          permissions: { set: ['USER'] } //everyone who signs up defaults to USER permission
           // name: args.name,
           // email: args.email,
           // password: args.password
           // ...args takes care all of that
-        },
+        }
       },
       info
     );
@@ -93,14 +93,14 @@ const Mutations = {
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     // we set the jwt as a cookie on the response
     ctx.response.cookie('token', token, {
-      domain:
-        process.env.NODE_ENV === 'development'
-          ? process.env.LOCAL_DOMAIN
-          : process.env.APP_DOMAIN,
-      secure: process.env.NODE_ENV === 'development' ? false : true,
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365,
-      sameSite: 'lax',
+      // domain:
+      //   process.env.NODE_ENV === 'development'
+      //     ? process.env.LOCAL_DOMAIN
+      //     : process.env.APP_DOMAIN,
+      // secure: process.env.NODE_ENV === 'development' ? false : true,
+      // httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365
+      // sameSite: 'lax'
     });
     // return user to the the broswer
     return user;
@@ -121,14 +121,14 @@ const Mutations = {
     const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
     //4. set the cookie with the token
     ctx.response.cookie('token', token, {
-      domain:
-        process.env.NODE_ENV === 'development'
-          ? process.env.LOCAL_DOMAIN
-          : process.env.APP_DOMAIN,
-      secure: process.env.NODE_ENV === 'development' ? false : true,
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24 * 365,
-      sameSite: 'lax',
+      // domain:
+      //   process.env.NODE_ENV === 'development'
+      //     ? process.env.LOCAL_DOMAIN
+      //     : process.env.APP_DOMAIN,
+      // secure: process.env.NODE_ENV === 'development' ? false : true,
+      // httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 365
+      // sameSite: 'lax'
     });
     //5. return the user
     return user;
@@ -138,7 +138,7 @@ const Mutations = {
       domain:
         process.env.NODE_ENV === 'development'
           ? process.env.LOCAL_DOMAIN
-          : process.env.APP_DOMAIN,
+          : process.env.APP_DOMAIN
     });
     return { message: 'Goodbye!' };
   },
@@ -156,7 +156,7 @@ const Mutations = {
     const res = await ctx.db.mutation.updateUser({
       //after generating the resetToken, save it to the user
       where: { email: args.email },
-      data: { resetToken, resetTokenExpiry },
+      data: { resetToken, resetTokenExpiry }
     });
     // console.log(res);
     // 3. Email them that reset token
@@ -166,7 +166,7 @@ const Mutations = {
       subject: 'Your password reset token',
       html: makeANiceEmail(`Your MEHKO password reset token is here!
        \n\n 
-       <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click here to reset your password on MEHKO</a>`),
+       <a href="${process.env.FRONTEND_URL}/reset?resetToken=${resetToken}">Click here to reset your password on MEHKO</a>`)
     });
 
     //4. return the success message
@@ -182,8 +182,8 @@ const Mutations = {
     const [user] = await ctx.db.query.users({
       where: {
         resetToken: args.resetToken,
-        resetTokenExpiry_gte: Date.now() - 3600000, //gte = greater than or equal
-      },
+        resetTokenExpiry_gte: Date.now() - 3600000 //gte = greater than or equal
+      }
     }); //this grab the first user where we search for users
     if (!user) {
       throw new Error('This token is either invalid or expired');
@@ -197,8 +197,8 @@ const Mutations = {
         //update the data
         password: password,
         resetToken: null,
-        resetTokenExpiry: null,
-      },
+        resetTokenExpiry: null
+      }
     });
     //6. generate JWT
     const token = jwt.sign({ userId: updatedUser.id }, process.env.APP_SECRET);
@@ -211,7 +211,7 @@ const Mutations = {
       secure: process.env.NODE_ENV === 'development' ? false : true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24 * 365,
-      sameSite: 'lax',
+      sameSite: 'lax'
     });
     //8. return the new user
     return updatedUser;
@@ -226,8 +226,8 @@ const Mutations = {
     const currentUser = await ctx.db.query.user(
       {
         where: {
-          id: ctx.request.userId,
-        },
+          id: ctx.request.userId
+        }
       },
       info
     );
@@ -239,10 +239,10 @@ const Mutations = {
         data: {
           //1. pass the data that needs to be updated
           permissions: {
-            set: args.permissions, //have to use set to update because permissions is ENUM
-          },
+            set: args.permissions //have to use set to update because permissions is ENUM
+          }
         },
-        where: { id: args.userId }, //2. pass where the data needs to be updated
+        where: { id: args.userId } //2. pass where the data needs to be updated
       },
       info
     ); //3. pass info of the query to the updated user
@@ -258,8 +258,8 @@ const Mutations = {
     const [existingCartItem] = await ctx.db.query.cartItems({
       where: {
         user: { id: userId },
-        item: { id: args.id },
-      },
+        item: { id: args.id }
+      }
     });
     // console.log(existingCartItem); //existingCartItem returns a promise, therefore need to await this
     //3. check if that item is already in their cart and increment by 1 if it is
@@ -268,7 +268,7 @@ const Mutations = {
       return ctx.db.mutation.updateCartItem(
         {
           where: { id: existingCartItem.id }, //where id is equal to existingcartitem.id
-          data: { quantity: existingCartItem.quantity + 1 },
+          data: { quantity: existingCartItem.quantity + 1 }
         },
         info
       );
@@ -278,12 +278,12 @@ const Mutations = {
       {
         data: {
           user: {
-            connect: { id: userId }, //inorder to connect relationship in prisma, need to use this syntax
+            connect: { id: userId } //inorder to connect relationship in prisma, need to use this syntax
           },
           item: {
-            connect: { id: args.id },
-          },
-        },
+            connect: { id: args.id }
+          }
+        }
       },
       info
     );
@@ -294,15 +294,15 @@ const Mutations = {
     const [existingCartItem] = await ctx.db.query.cartItems({
       where: {
         user: { id: userId },
-        item: { id: args.id },
-      },
+        item: { id: args.id }
+      }
     });
 
     if (existingCartItem.quantity > 1) {
       return ctx.db.mutation.updateCartItem(
         {
           where: { id: existingCartItem.id },
-          data: { quantity: existingCartItem.quantity - 1 },
+          data: { quantity: existingCartItem.quantity - 1 }
         },
         info
       );
@@ -314,8 +314,8 @@ const Mutations = {
     const cartItem = await ctx.db.query.cartItem(
       {
         where: {
-          id: args.id,
-        },
+          id: args.id
+        }
       },
       `{id, user { id }}` //instead of passing info, we need to find out the user that owns the cart item.
     );
@@ -329,8 +329,8 @@ const Mutations = {
     return ctx.db.mutation.deleteCartItem(
       {
         where: {
-          id: args.id,
-        },
+          id: args.id
+        }
       },
       info
     );
@@ -364,14 +364,14 @@ const Mutations = {
     const charge = await stripe.charges.create({
       amount: amount,
       currency: 'USD',
-      source: args.token,
+      source: args.token
     });
     //4. convert the cartitems to orderitems
     const orderItems = user.cart.map(cartItem => {
       const orderItem = {
         ...cartItem.item, //copy every single filed, since we don't want to make a relationship as user can temper with that.
         quantity: cartItem.quantity,
-        user: { connect: { id: userId } },
+        user: { connect: { id: userId } }
       };
       delete orderItem.id; //since we don't want the id
       return orderItem; //end up with an array of order items that has been disconnected from the actual item
@@ -383,19 +383,19 @@ const Mutations = {
         total: charge.amount, //charge is coming back from stripe
         charge: charge.id,
         items: { create: orderItems },
-        user: { connect: { id: userId } },
-      },
+        user: { connect: { id: userId } }
+      }
     });
     //6. clean up - clear the users cart
     const cartItemsIds = user.cart.map(cartItem => cartItem.id); //give us an array of item ids that's current in user's cart
     await ctx.db.mutation.deleteManyCartItems({
       where: {
-        id_in: cartItemsIds, //delete if the id is in the user's cart
-      },
+        id_in: cartItemsIds //delete if the id is in the user's cart
+      }
     });
     //7. return the order to the client
     return order;
-  },
+  }
 };
 
 module.exports = Mutations;

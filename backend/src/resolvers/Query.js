@@ -38,7 +38,7 @@ const Query = {
     // 2. Query the current order
     const order = await ctx.db.query.order(
       {
-        where: { id: args.id },
+        where: { id: args.id }
       },
       info
     );
@@ -64,12 +64,12 @@ const Query = {
     return ctx.db.query.orders(
       {
         where: {
-          user: { id: userId },
-        },
+          user: { id: userId }
+        }
       },
       info
     );
-  },
+  }
 };
 
 module.exports = Query;

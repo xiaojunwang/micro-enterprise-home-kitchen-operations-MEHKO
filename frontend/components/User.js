@@ -34,7 +34,7 @@ const User = props => (
 );
 
 User.propTypes = {
-  children: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired
 };
 //whenever you use it the only thing you must pass as a child is going to be a function
 
