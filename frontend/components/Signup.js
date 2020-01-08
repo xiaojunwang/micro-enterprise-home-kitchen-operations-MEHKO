@@ -24,10 +24,21 @@ class Signup extends Component {
     name: '',
     email: '',
     password: '',
+    error: null
   };
+
   saveToState = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  // handleClick = () => {
+  //   if (this.state.error) {
+  //     console.log('Signup failed');
+  //   } else {
+  //     console.log('Signup success!');
+  //   }
+  // };
+
   render() {
     return (
       <Mutation

@@ -1,7 +1,8 @@
-import Signup from "../components/Signup";
-import Signin from "../components/Signin";
-import styled from "styled-components";
-import RequestReset from "../components/RequestReset";
+import Signup from '../components/Signup';
+import Signin from '../components/Signin';
+import styled from 'styled-components';
+import RequestReset from '../components/RequestReset';
+import { Alert } from 'reactstrap';
 
 const Columns = styled.div`
   display: grid;
@@ -10,11 +11,18 @@ const Columns = styled.div`
 `;
 
 const SignupPage = props => (
-  <Columns>
-    <Signup />
-    <Signin />
-    <RequestReset />
-  </Columns>
+  <>
+    <Alert color='warning'>
+      If you're experiencing trouble logging in after registering, please enable
+      your browser's setting to accept third-party cookies!
+    </Alert>
+    <br />
+    <Columns>
+      <Signup />
+      <Signin />
+      <RequestReset />
+    </Columns>
+  </>
 );
 
 export default SignupPage;
