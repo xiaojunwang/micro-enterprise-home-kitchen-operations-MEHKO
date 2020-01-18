@@ -12,10 +12,10 @@ const Columns = styled.div`
 
 const SignupPage = props => (
   <>
-    <Alert color='warning'>
+    <h3>
       If you're experiencing trouble logging in after registering, please enable
       your browser's setting to accept third-party cookies!
-    </Alert>
+    </h3>
     <br />
     <Columns>
       <Signup />
